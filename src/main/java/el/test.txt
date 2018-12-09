@@ -1,0 +1,2 @@
+book.author=王云飞
+book.name=spring boot
