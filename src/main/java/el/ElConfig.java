@@ -30,19 +30,29 @@ public class ElConfig
 	private Resource testUrl;
 	@Value("${book.name}")
 	private String bookName;
-	@Autowired
 	private Environment environment;
-
 
     /**
      * 注入配置文件
-     * @return
+     * @return 返回PropertySourcesPlaceholderConfigurer类
      */
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertyConfigure()
 	{
 		return new PropertySourcesPlaceholderConfigurer();
 	}
+
+    public Environment getEnvironment()
+    {
+        return environment;
+    }
+
+    @Autowired
+    public void setEnvironment(Environment environment)
+    {
+        this.environment = environment;
+    }
+
 	public void outputResource()
 	{
 		try{
@@ -50,8 +60,8 @@ public class ElConfig
 			System.out.println(osName);
 			System.out.println(randNumber);
 			System.out.println(fromAnother);
-			System.out.println(IOUtils.toString(testFile.getInputStream()));
-			System.out.println(IOUtils.toString(testUrl.getInputStream()));
+            System.out.println(IOUtils.toString(testFile.getInputStream(), "UTF-8"));
+            System.out.println(IOUtils.toString(testUrl.getInputStream(), "UTF-8"));
 			System.out.println(bookName);
 			System.out.println(environment.getProperty("book.author"));
 
