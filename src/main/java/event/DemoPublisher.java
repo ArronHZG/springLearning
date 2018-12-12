@@ -20,7 +20,7 @@ public class DemoPublisher
         this.applicationContext = applicationContext;
     }
 
-    private void publish(String msg)
+    public void publish(String msg)
     {
         applicationContext.publishEvent(new DemoEvent(this, msg));
     }
